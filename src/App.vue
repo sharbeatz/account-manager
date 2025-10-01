@@ -7,6 +7,8 @@ import { useUserValidation } from '@/composables/useUserValidation';
 import { useUserMark } from '@/composables/useUserMark';
 import type { User, UserErrors } from '@/types/user';
 
+import EmptyUsers from './components/EmptyUsers.vue';
+
 const userStore = useUsersStore();
 const { usersList, usersCount } = storeToRefs(userStore);
 const { userErrors, validateUser } = useUserValidation();
@@ -63,7 +65,7 @@ watch(usersList, (newUsers: User[]) => {
       Метка - необязательное поле к заполнению. Максимум 50 символов. 
       В поле вводятся текстовые метки, через знак ;
     </div>
-    
+     <EmptyUsers v-if="usersList.length===0"/>
     <div class="account-list">
       <UserForm 
         v-for="user in usersList" 
@@ -74,6 +76,7 @@ watch(usersList, (newUsers: User[]) => {
         @validate="validateAndSaveUser"
       />
     </div>
+  
   </div>
 </template>
 
@@ -116,13 +119,14 @@ h1 {
   font-weight: 600;
 }
 
+
 .add-btn {
   background-color: #3498db;
   color: white;
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 44px;   
+  height: 44px;   
   font-size: 24px;
   cursor: pointer;
   display: flex;

@@ -262,9 +262,9 @@ watch(usersList, (newUsers: User[]) => {
         color: #7f8c8d;
         font-weight: normal;
     }
-        .form-group {
-        flex: 1;
-        min-width: 0;
+    .form-group {
+    flex: 1;
+    min-width: 0;
     }
     body {
             background-color: #f5f7fa;
